@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+  swModel:
+    image: 192.168.2.150/zrar/mleap-serving:0.9.0-SNAPSHOT
+    volumes:
+      - ./models:/models
+    networks:
+      - my-bridge
+
+  yythModel:
+    image: 192.168.2.150/zrar/mleap-serving:0.9.0-SNAPSHOT
+    volumes:
+      - ./models:/models
+    networks:
+      - my-bridge
+
+  qgfxModel:
+    image: 192.168.2.150/zrar/mleap-serving:0.9.0-SNAPSHOT
+    volumes:
+      - ./models:/models
+    networks:
+      - my-bridge
+
+  QaSatClassification:
+    image: 192.168.2.150/zrar/mleap-serving:0.9.0-SNAPSHOT
+    volumes:
+      - ./models:/models
+    networks:
+      - my-bridge
+
+  nsrglModel:
+    image: 192.168.2.150/zrar/mleap-serving:0.9.0-SNAPSHOT
+    volumes:
+      - ./models:/models
+    networks:
+      - my-bridge
+
+  mleap-bridge:
+    image: 192.168.2.150/zrar/mleap-bridge:1.0.0
+    ports:
+      - 8083:8080
+    networks:
+      - my-bridge
+
+networks:
+  my-bridge:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.1.48/28

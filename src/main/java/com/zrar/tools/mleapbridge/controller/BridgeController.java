@@ -29,7 +29,7 @@ public class BridgeController {
     @RequestMapping("{mleap}/{uri}")
     public ResponseEntity<byte[]> redirect(HttpServletRequest request,
                                            @RequestHeader MultiValueMap<String, String> headers,
-                                           @RequestBody byte[] body,
+                                           @RequestBody(required = false) byte[] body,
                                            @PathVariable("mleap") String mleap,
                                            @PathVariable("uri") String uri) throws UnsupportedEncodingException {
 
